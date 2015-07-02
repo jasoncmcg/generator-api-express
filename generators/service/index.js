@@ -4,34 +4,34 @@ var fs = require('fs');
 module.exports = yeoman.generators.Base.extend({
   initializingStep: function() {
     this.questions = [];
-    this.serviceName = 'clown';
-    this.serviceClassName = 'Clown';
-    this.serviceInstanceName = 'clown';
-    this.serviceFolderPath = 'circus';
-    this.serviceRequirePathFromTest = '';
+    this.modelName = 'model';
+    this.modelClassName = 'ClassName';
+    this.modelInstanceName = 'instanceName';
+    this.modelFolderPath = 'groupName';
+    this.modelRequirePathFromTest = '';
   },
 
   promptingStep: function() {
     this.questions.push({ type    : 'input',
-                          name    : 'serviceName',
-                          message : 'Service Name (dash delimited, leave off -service)',
-                          default : this.serviceName });
+                          name    : 'modelName',
+                          message : 'model Name (dash delimited, leave off -model)',
+                          default : this.modelName });
 
     this.questions.push({ type    : 'input',
-                          name    : 'serviceFolderPath',
-                          message : 'Service Folder Path (relative path, no starting or training slashes)',
-                          default :  this.serviceFolderPath });
+                          name    : 'modelFolderPath',
+                          message : 'model Folder Path (relative path, no starting or training slashes)',
+                          default :  this.modelFolderPath });
 
     var done = this.async();
 
     var generator = this;
 
     var handleAnswers = function(answers) {
-      generator.serviceName = answers.serviceName.toLowerCase();
-      generator.serviceClassName = generator._.classify(answers.serviceName);
-      generator.serviceInstanceName = generator._.camelize(generator.serviceName);
-      generator.serviceFolderPath = answers.serviceFolderPath.toLowerCase();
-      generator.serviceRequirePathFromTest = getTestRequirePrefix(generator.serviceFolderPath) + 'app/services/' + generator.serviceFolderPath + '/' + generator.serviceName + '-service';
+      generator.modelName = answers.modelName.toLowerCase();
+      generator.modelClassName = generator._.classify(answers.modelName);
+      generator.modelInstanceName = generator._.camelize(generator.modelName);
+      generator.modelFolderPath = answers.modelFolderPath.toLowerCase();
+      generator.modelRequirePathFromTest = getTestRequirePrefix(generator.modelFolderPath) + 'app/models/' + generator.modelFolderPath + '/' + generator.modelName + '-model';
 
       done();
     };
@@ -46,8 +46,8 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writingStep: function() {
-    copyService(this);
-    copyServiceTest(this);
+    copymodel(this);
+    copymodelTest(this);
   },
 
   conflictsStep: function() {
@@ -60,11 +60,11 @@ module.exports = yeoman.generators.Base.extend({
   }
 });
 
-function getTestRequirePrefix(serviceFolderPath) {
+function getTestRequirePrefix(modelFolderPath) {
   var requirePrefix = '../../../';
 
-  if(serviceFolderPath.length !== 0) {
-    var folderCount = (serviceFolderPath.match(/\//g) || []).length + 1;
+  if(modelFolderPath.length !== 0) {
+    var folderCount = (modelFolderPath.match(/\//g) || []).length + 1;
 
     for(var i = 0; i < folderCount; i++) {
       requirePrefix = '../' + requirePrefix;
@@ -74,26 +74,26 @@ function getTestRequirePrefix(serviceFolderPath) {
   return requirePrefix;
 }
 
-function copyService(generator) {
-  var serviceDestination = generator.destinationRoot() +
-                              '/app/services/' +
-                              generator.serviceFolderPath +
+function copymodel(generator) {
+  var modelDestination = generator.destinationRoot() +
+                              '/app/models/' +
+                              generator.modelFolderPath +
                               '/' +
-                              generator.serviceName.toLowerCase() +
-                              '-service.js';
+                              generator.modelName.toLowerCase() +
+                              '-model.js';
 
-  copyTemplate(generator, 'app/services/_service.js', serviceDestination);
+  copyTemplate(generator, 'app/models/_model.js', modelDestination);
 }
 
-function copyServiceTest(generator) {
-  var serviceTestDestination = generator.destinationRoot() +
-                                  '/test/spec/services/' +
-                                  generator.serviceFolderPath +
+function copymodelTest(generator) {
+  var modelTestDestination = generator.destinationRoot() +
+                                  '/test/spec/models/' +
+                                  generator.modelFolderPath +
                                   '/' +
-                                  generator.serviceName.toLowerCase() +
-                                  '-service.tests.js';
+                                  generator.modelName.toLowerCase() +
+                                  '-model.tests.js';
 
-  copyTemplate(generator, 'test/spec/services/_service.tests.js', serviceTestDestination);
+  copyTemplate(generator, 'test/spec/models/_model.tests.js', modelTestDestination);
 }
 
 function copyTemplate(generator, template, path) {
