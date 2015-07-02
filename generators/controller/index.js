@@ -6,13 +6,13 @@ const routeConfigRequirePath = '/app/config/route.config.json';
 module.exports = yeoman.generators.Base.extend({
   initializingStep: function() {
     this.questions = [];
-    this.controllerName = 'clowns';
-    this.controllerClassName = 'Clowns';
-    this.controllerInstanceName = 'clowns';
+    this.controllerName = 'name';
+    this.controllerClassName = 'Class';
+    this.controllerInstanceName = 'instanceName';
     this.controllerVersion = 'v1';
-    this.controllerFolderPath = 'circus';
+    this.controllerFolderPath = 'groupName';
     this.controllerRequirePathFromTest = '';
-    this.controllerRoute = '/clowns/:clownid';
+    this.controllerRoute = '/route/:itemId';
     this.controllerMethod = 'GET';
     this.httpMethods = [ 'GET', 'PUT', 'POST', 'DELETE' ];
   },
