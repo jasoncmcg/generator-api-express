@@ -1,6 +1,6 @@
 {
-  "name": "generator-express-rest-api",
-  "version": "1.2.1",
+  "name": "generator-api-express",
+  "version": "0.1",
   "description": "Yeoman generator for a RESTful API using express, cluster-service, mocha, chai, sinon, and istanbul",
   "author": "Tim Walker <tim.r.walker@gmail.com>",
   "license": "MIT",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/trwalker/generator-express-rest-api.git"
+    "url": "https://github.com/magnis/generator-api-express.git"
   },
   "keywords": [
     "yo",
@@ -21,9 +21,9 @@
     "service"
   ],
   "bugs": {
-    "url": "https://github.com/trwalker/generator-express-rest-api/issues"
+    "url": "https://github.com/magnis/generator-api-express/issues"
   },
-  "homepage": "https://github.com/trwalker/generator-express-rest-api",
+  "homepage": "https://github.com/magnis/generator-api-express",
   "dependencies": {
     "yeoman-generator": "^0.17.3"
   },
