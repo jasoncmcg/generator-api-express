@@ -6,7 +6,7 @@ module.exports = yeoman.generators.Base.extend({
   initializingStep: function() {
     this.questions = [];
     this.applicationName = path.basename(process.cwd());
-    this.version = '1.0.0';
+    this.version = '0.0.1';
     this.applicationDescription = '';
     this.author = '';
     this.gitRepository = '';

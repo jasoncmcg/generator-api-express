@@ -1,10 +1,12 @@
 [![Build Status](https://travis-ci.org/trwalker/generator-express-rest-api.svg)](https://travis-ci.org/trwalker/generator-express-rest-api)
 
-generator-express-rest-api
+generator-api-express
 ==========================
 
 ### Summary
 This is a Yeoman generator to quick scaffold a RESTful API using expresss, cluter-service, mocha, chai, sinon, and istanbul.  The structure generated follows the MVC controller/service/repository pattern.
+
+NOTE: All these items below need to be evaluated and updated
 
 ### Installing Yeoman
 http://yeoman.io/learning/index.html
@@ -22,8 +24,9 @@ Python 2.7.x: https://www.python.org/downloads/
 `> yo express-rest-api:controller`
 
 ### Scaffolding Service and Service Test
-`> yo express-rest-api:service`
+`> yo express-rest-api:model`
 
+### This item is being removed
 ### Scaffolding Repository and Repository Test
 `> yo express-rest-api:repository`
 
@@ -92,5 +95,3 @@ server.js
 \..\..\..\..\user-repository.tests.js
 ```
 
-### Example Application: Marvel Node API
-https://github.com/trwalker/marvel-node
